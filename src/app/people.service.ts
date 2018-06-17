@@ -1,20 +1,23 @@
+
+import {of as observableOf,  Observable } from 'rxjs';
+
+import {map} from 'rxjs/operators';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/map';
+
+
 
 @Injectable()
 export class PeopleService {
   constructor() {}
 
   getPeople() {
-    return Observable.of([
+    return observableOf([
       {
         name: 'Juri'
       },
       {
         name: 'Steffi'
       }
-    ]).map(x => x.filter(entry => entry.name === 'Juri'));
+    ]).pipe(map(x => x.filter(entry => entry.name === 'Juri')));
   }
 }
